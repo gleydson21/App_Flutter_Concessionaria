@@ -1,0 +1,54 @@
+lib/
+ |- application/
+ |   |- carros/
+ |   |   |- carro_service.dart
+ |   |   |- carro_repository.dart
+ |   |   |- carro.dart
+ |   |   |- carro_dto.dart
+ |   |   |- carro_mapper.dart
+ |   |
+ |   |- usuarios/
+ |       |- usuario_service.dart
+ |       |- usuario_repository.dart
+ |       |- usuario.dart
+ |       |- usuario_dto.dart
+ |       |- usuario_mapper.dart
+ |
+ |- domain/
+ |   |- carros/
+ |   |   |- carro.dart
+ |   |
+ |   |- usuarios/
+ |       |- usuario.dart
+ |
+ |- infrastructure/
+ |   |- database/
+ |   |   |- carros/
+ |   |   |   |- carros_database.dart
+ |   |   |
+ |   |   |- usuarios/
+ |   |       |- usuarios_database.dart
+ |   |
+ |   |- repositories/
+ |       |- carros/
+ |       |   |- carro_repository_impl.dart
+ |       |
+ |       |- usuarios/
+ |           |- usuario_repository_impl.dart
+ |
+ |- presentation/
+ |   |- pages/
+ |   |   |- carro_detail_page.dart
+ |   |   |- carro_list_page.dart
+ |   |   |- usuario_detail_page.dart
+ |   |   |- usuario_list_page.dart
+ |   |
+ |   |- widgets/
+ |       |- carro_card.dart
+ |       |- usuario_card.dart
+ |       |- custom_drawer.dart
+ |
+ |- shared/
+     |- exceptions/
+     |- utils/
+     |- validation/
