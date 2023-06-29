@@ -1,8 +1,6 @@
 import 'package:app_concessionaria/domain/carros/carro.dart';
-import 'package:app_concessionaria/domain/carros/carro_repository.dart';
+import '../../infrastructure/repositories/carros/carro_repository.dart';
 import 'package:flutter/material.dart';
-
-import '../../application/carros/carro_repository.dart';
 
 class CarroDetailPage extends StatefulWidget {
   final Carro carro;

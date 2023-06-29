@@ -37,5 +37,23 @@ class Carro {
     };
   }
 
-  copyWith({required String marca, required String modelo, required int ano, required String cor, required String imagemUrl}) {}
+  double get preco => 0.0; // implementação de exemplo
+
+  Carro copyWith({
+    String? id,
+    String? marca,
+    String? modelo,
+    int? ano,
+    String? cor,
+    String? imagemUrl,
+  }) {
+    return Carro(
+      id: id ?? this.id,
+      marca: marca ?? this.marca,
+      modelo: modelo ?? this.modelo,
+      ano: ano ?? this.ano,
+      cor: cor ?? this.cor,
+      imagemUrl: imagemUrl ?? this.imagemUrl,
+    );
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:app_concessionaria/domain/usuarios/usuario.dart';
 import 'package:flutter/material.dart';
 
+import '../pages/usuario_detail_page.dart';
+
 class UsuarioCard extends StatelessWidget {
   final Usuario usuario;
 
@@ -8,6 +10,8 @@ class UsuarioCard extends StatelessWidget {
     Key? key,
     required this.usuario,
   }) : super(key: key);
+
+  get usuarioRepository => null;
 
   @override
   Widget build(BuildContext context) {

@@ -1,25 +1,32 @@
-import 'package:app_concessionaria/data/usuarios/usuarios_database.dart';
+import '../../database/usuarios/usuarios_database.dart' show UsuariosDatabase;
 import 'package:app_concessionaria/domain/usuarios/usuario.dart';
-import 'package:app_concessionaria/domain/usuarios/usuario_repository.dart';
 
 import '../../../application/usuarios/usuario_repository.dart';
-import '../../database/usuarios/usuarios_database.dart';
 
 class UsuarioRepositoryImpl implements UsuarioRepository {
   final usuariosDatabase = UsuariosDatabase.instance;
 
   @override
   Future<List<Usuario>> getUsuarios() async {
-    return await usuariosDatabase.getUsuarios();
+    final usuariosJson = await usuariosDatabase.getUsuarios();
+    final usuarios =
+        usuariosJson.map((json) => Usuario.fromJson(json)).toList();
+    return usuarios;
   }
 
   @override
-  Future<Usuario?> getUsuarioById(String id) async {
-    return await usuariosDatabase.getUsuarioById(id);
+  Future<Usuario> getUsuarioById(String id) async {
+    final usuarioJson = await usuariosDatabase.getUsuarioById(id);
+    if (usuarioJson != null) {
+      return Usuario.fromJson(usuarioJson as Map<String, Object?>);
+    } else {
+      throw Exception('Usuário não encontrado');
+    }
   }
 
   @override
   Future<void> saveUsuario(Usuario usuario) async {
+    // ignore: unnecessary_null_comparison
     if (usuario.id != null) {
       return await usuariosDatabase.updateUsuario(usuario);
     } else {
@@ -32,7 +39,6 @@ class UsuarioRepositoryImpl implements UsuarioRepository {
     return await usuariosDatabase.deleteUsuario(id);
   }
 
-  @override
   Future<Usuario?> login(String email, String senha) async {
     final usuarios = await usuariosDatabase.getUsuarios();
 

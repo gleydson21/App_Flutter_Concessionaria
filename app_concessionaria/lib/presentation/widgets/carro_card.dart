@@ -1,4 +1,4 @@
-import 'package:app_concessionaria/domain/carros/carro.dart';
+import '../../domain/carros/carro.dart' show Carro;
 import 'package:flutter/material.dart';
 
 class CarroCard extends StatelessWidget {
@@ -27,7 +27,7 @@ class CarroCard extends StatelessWidget {
               children: [
                 Text(
                   carro.modelo,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),

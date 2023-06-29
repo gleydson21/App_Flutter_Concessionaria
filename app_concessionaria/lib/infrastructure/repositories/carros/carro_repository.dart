@@ -1,4 +1,4 @@
-import 'package:app_concessionaria/domain/carros/carro.dart';
+import 'package:app_concessionaria/domain/carros/carro.dart' show Carro;
 
 abstract class CarroRepository {
   Future<List<Carro>> getCarros();

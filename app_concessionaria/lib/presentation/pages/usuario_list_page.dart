@@ -1,7 +1,9 @@
 import 'package:app_concessionaria/domain/usuarios/usuario.dart';
-import 'package:app_concessionaria/domain/usuarios/usuario_repository.dart';
-import 'package:app_concessionaria/presentation/usuario_detail_page.dart';
+import 'package:app_concessionaria/presentation/pages/usuario_detail_page.dart'
+    show UsuarioDetailPage;
 import 'package:flutter/material.dart';
+
+import '../../application/usuarios/usuario_repository.dart';
 
 class UsuarioListPage extends StatefulWidget {
   final UsuarioRepository usuarioRepository;
@@ -12,6 +14,7 @@ class UsuarioListPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _UsuarioListPageState createState() => _UsuarioListPageState();
 }
 
@@ -32,7 +35,7 @@ class _UsuarioListPageState extends State<UsuarioListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Usuários'),
+        title: const Text('Usuários'),
         centerTitle: true,
       ),
       body: FutureBuilder<List<Usuario>>(
@@ -42,7 +45,7 @@ class _UsuarioListPageState extends State<UsuarioListPage> {
             final usuarios = snapshot.data!;
 
             if (usuarios.isEmpty) {
-              return Center(
+              return const Center(
                 child: Text('Nenhum usuário encontrado'),
               );
             }
@@ -57,31 +60,31 @@ class _UsuarioListPageState extends State<UsuarioListPage> {
                   subtitle: Text(usuario.email),
                   trailing: IconButton(
                     onPressed: () => _editarUsuario(context, usuario),
-                    icon: Icon(Icons.edit),
+                    icon: const Icon(Icons.edit),
                   ),
                 );
               },
             );
           } else if (snapshot.hasError) {
-            return Center(
+            return const Center(
               child: Text('Erro ao carregar usuários'),
             );
           }
 
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _adicionarUsuario(context),
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
 
   Future<void> _adicionarUsuario(BuildContext context) async {
-    final novoUsuario = Usuario();
+    final novoUsuario = Usuario(email: '', id: '', nome: '', senha: '');
 
     await Navigator.of(context).push(
       MaterialPageRoute(

@@ -1,6 +1,6 @@
 import 'package:app_concessionaria/domain/carros/carro.dart';
-import 'package:app_concessionaria/domain/carros/carro_repository.dart';
-import 'package:app_concessionaria/presentation/carro_detail_page.dart';
+import 'package:app_concessionaria/infrastructure/repositories/carros/carro_repository.dart';
+import 'package:app_concessionaria/presentation/pages/carro_detail_page.dart';
 import 'package:flutter/material.dart';
 
 class CarroListPage extends StatefulWidget {
@@ -12,6 +12,7 @@ class CarroListPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CarroListPageState createState() => _CarroListPageState();
 }
 
@@ -32,7 +33,7 @@ class _CarroListPageState extends State<CarroListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Carros'),
+        title: const Text('Carros'),
         centerTitle: true,
       ),
       body: FutureBuilder<List<Carro>>(
@@ -42,7 +43,7 @@ class _CarroListPageState extends State<CarroListPage> {
             final carros = snapshot.data!;
 
             if (carros.isEmpty) {
-              return Center(
+              return const Center(
                 child: Text('Nenhum carro encontrado'),
               );
             }
@@ -58,31 +59,38 @@ class _CarroListPageState extends State<CarroListPage> {
                   subtitle: Text('${carro.marca} - ${carro.ano}'),
                   trailing: IconButton(
                     onPressed: () => _editarCarro(context, carro),
-                    icon: Icon(Icons.edit),
+                    icon: const Icon(Icons.edit),
                   ),
                 );
               },
             );
           } else if (snapshot.hasError) {
-            return Center(
+            return const Center(
               child: Text('Erro ao carregar carros'),
             );
           }
 
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => _adicionarCarro(context),
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
 
   Future<void> _adicionarCarro(BuildContext context) async {
-    final novoCarro = Carro();
+    final novoCarro = Carro(
+      ano: 0,
+      cor: '',
+      id: '',
+      imagemUrl: '',
+      marca: '',
+      modelo: '',
+    );
 
     await Navigator.of(context).push(
       MaterialPageRoute(

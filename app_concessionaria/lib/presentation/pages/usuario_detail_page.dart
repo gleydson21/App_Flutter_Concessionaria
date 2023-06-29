@@ -1,6 +1,7 @@
 import 'package:app_concessionaria/domain/usuarios/usuario.dart';
-import 'package:app_concessionaria/domain/usuarios/usuario_repository.dart';
 import 'package:flutter/material.dart';
+
+import '../../application/usuarios/usuario_repository.dart';
 
 class UsuarioDetailPage extends StatefulWidget {
   final Usuario usuario;
@@ -13,6 +14,7 @@ class UsuarioDetailPage extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _UsuarioDetailPageState createState() => _UsuarioDetailPageState();
 }
 
@@ -44,23 +46,23 @@ class _UsuarioDetailPageState extends State<UsuarioDetailPage> {
           children: [
             TextFormField(
               controller: _nomeController,
-              decoration: InputDecoration(labelText: 'Nome'),
+              decoration: const InputDecoration(labelText: 'Nome'),
             ),
             TextFormField(
               controller: _emailController,
-              decoration: InputDecoration(labelText: 'E-mail'),
+              decoration: const InputDecoration(labelText: 'E-mail'),
             ),
             TextFormField(
               controller: _senhaController,
               obscureText: true,
-              decoration: InputDecoration(labelText: 'Senha'),
+              decoration: const InputDecoration(labelText: 'Senha'),
             ),
             const SizedBox(height: 16),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _salvar,
-                child: Text('Salvar'),
+                child: const Text('Salvar'),
               ),
             ),
             const SizedBox(height: 16),
@@ -68,7 +70,7 @@ class _UsuarioDetailPageState extends State<UsuarioDetailPage> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _excluir,
-                child: Text('Excluir'),
+                child: const Text('Excluir'),
               ),
             ),
           ],
@@ -86,12 +88,14 @@ class _UsuarioDetailPageState extends State<UsuarioDetailPage> {
 
     await widget.usuarioRepository.saveUsuario(usuario);
 
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pop();
   }
 
   Future<void> _excluir() async {
-    await widget.usuarioRepository.deleteUsuario(widget.usuario.id!);
+    await widget.usuarioRepository.deleteUsuario(widget.usuario.id);
 
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pop();
   }
 }

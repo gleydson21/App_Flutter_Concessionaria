@@ -28,4 +28,6 @@ class Usuario {
       'senha': senha,
     };
   }
+
+  copyWith({required String nome, required String email, required String senha}) {}
 }
