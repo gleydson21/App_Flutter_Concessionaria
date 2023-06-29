@@ -19,7 +19,7 @@ class UsuarioCard extends StatelessWidget {
       child: ListTile(
         title: Text(usuario.nome),
         subtitle: Text(usuario.email),
-        trailing: Icon(Icons.arrow_forward),
+        trailing: const Icon(Icons.arrow_forward),
         onTap: () => _editarUsuario(context),
       ),
     );

@@ -16,7 +16,7 @@ class CustomDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          DrawerHeader(
+          const DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
@@ -29,13 +29,13 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.person),
-            title: Text('Usuários'),
+            leading: const Icon(Icons.person),
+            title: const Text('Usuários'),
             onTap: onUsuariosPressed,
           ),
           ListTile(
-            leading: Icon(Icons.car_rental),
-            title: Text('Carros'),
+            leading: const Icon(Icons.car_rental),
+            title: const Text('Carros'),
             onTap: onCarrosPressed,
           ),
         ],
